@@ -1,5 +1,5 @@
 // Connect to the backend via Socket.IO (replace with your Vercel URL after deployment)
-const socket = io('https://your-backend.vercel.app');
+const socket = io('https://movie-night-backend-three.vercel.app/');
 
 // Check which page we're on based on the file name
 const isPartyPage = window.location.pathname.includes('party.html');
