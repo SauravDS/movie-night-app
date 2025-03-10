@@ -1,0 +1,175 @@
+/* Reset default margins and ensure full height */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* General styling for headers */
+h1 {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Button container for landing page */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+/* General button styling */
+button {
+    width: 80%;
+    max-width: 300px;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Form styling for host/join screens */
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form input:focus {
+    border-color: #3498db;
+}
+
+/* Error message styling */
+.error {
+    color: #e74c3c;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Hidden class to toggle visibility */
+.hidden {
+    display: none;
+}
+
+/* Party Screen: Video Player */
+#video-player {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: auto; /* Maintains aspect ratio */
+    max-height: 40vh; /* Limits height to ~40% of viewport */
+    background-color: black;
+    z-index: 1;
+}
+
+/* Party Screen: Room Info */
+#room-info {
+    padding: 10px;
+    background-color: #ecf0f1;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Party Screen: Chat Container */
+#chat-container {
+    height: calc(100vh - 40vh - 50px); /* Remaining height after video and room info */
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #fff;
+    width: 100%;
+}
+
+#messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+#messages li {
+    padding: 8px;
+    margin: 5px 0;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    word-wrap: break-word;
+}
+
+/* Chat Input and Send Button */
+#chat-input {
+    width: 70%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+#send-btn {
+    width: 25%;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #2ecc71;
+    border-radius: 0 5px 5px 0;
+    margin: 0;
+}
+
+#send-btn:hover {
+    background-color: #27ae60;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 360px) {
+    h1 { font-size: 20px; }
+    button { font-size: 14px; }
+    .form input { font-size: 12px; }
+    #chat-input, #send-btn { font-size: 12px; }
+}
