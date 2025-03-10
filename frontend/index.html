@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Night App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Landing Page Header -->
+    <h1>Movie Night App</h1>
+    <p>Watch movies together, anywhere!</p>
+
+    <!-- Buttons to toggle between Host and Join forms -->
+    <div class="button-container">
+        <button id="host-btn">Host a Party</button>
+        <button id="join-btn">Join a Party</button>
+    </div>
+
+    <!-- Host Form (hidden by default) -->
+    <div id="host-form" class="form hidden">
+        <h2>Host a Party</h2>
+        <input type="text" id="host-name" placeholder="Your Name (e.g., Alex)" required>
+        <input type="text" id="movie-name" placeholder="Movie Name (e.g., The Notebook)" required>
+        <input type="text" id="video-link" placeholder="Google Drive Video Link" required>
+        <button id="play-video">Play Video</button>
+    </div>
+
+    <!-- Join Form (hidden by default) -->
+    <div id="join-form" class="form hidden">
+        <h2>Join a Party</h2>
+        <input type="text" id="participant-name" placeholder="Your Name (e.g., Sam)" required>
+        <input type="text" id="room-id" placeholder="Room ID (e.g., room-xyz123)" required>
+        <button id="join-party">Join Party</button>
+    </div>
+
+    <!-- Error Message (hidden by default) -->
+    <p id="error-msg" class="error hidden"></p>
+
+    <!-- Socket.IO and custom script -->
+    <script src="https://your-backend.vercel.app/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

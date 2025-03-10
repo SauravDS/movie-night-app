@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Room - Movie Night App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Room Information -->
+    <div id="room-info">
+        Loading room details...
+        <span id="room-id-copy" style="display: none;">
+            | Room ID: <span id="room-id-text"></span>
+            <button id="copy-btn" style="width: auto; padding: 5px 10px; margin-left: 10px;">Copy</button>
+        </span>
+    </div>
+
+    <!-- Video Player (sticky, full-width) -->
+    <video id="video-player" controls>
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Chat Area -->
+    <div id="chat-container">
+        <ul id="messages"></ul>
+        <div class="chat-input-container">
+            <input id="chat-input" placeholder="Type a message..." autocomplete="off">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <!-- Socket.IO and custom script -->
+    <script src="https://your-backend.vercel.app/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Inline script to initialize party page -->
+    <script>
+        // Ensure room ID is present in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomId = urlParams.get('room');
+        if (!roomId) {
+            alert('No Room ID provided. Redirecting to home.');
+            window.location.href = '/';
+        }
+
+        // Show Room ID and Copy button only for host
+        document.addEventListener('DOMContentLoaded', () => {
+            socket.on('room-data', (data) => {
+                if (data.participants[socket.id] === data.hostName) {
+                    document.getElementById('room-id-text').textContent = roomId;
+                    document.getElementById('room-id-copy').style.display = 'inline';
+                }
+            });
+
+            // Copy Room ID to clipboard
+            document.getElementById('copy-btn').addEventListener('click', () => {
+                const roomUrl = `${window.location.origin}/party.html?room=${roomId}`;
+                navigator.clipboard.writeText(roomUrl).then(() => {
+                    alert('Room URL copied to clipboard!');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
